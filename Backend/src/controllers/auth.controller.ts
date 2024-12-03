@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import User from "../models/user";
 import { Constants } from "../constants/constants";
 
+// register user
 export const registerUser = async (req: Request, res: Response) => {
   try {
     const { email, password, role } = req.body;
