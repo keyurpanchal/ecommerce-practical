@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <h2 class="text-center">Register</h2>
+  <form (ngSubmit)="register()" #registerForm="ngForm" class="w-50 mx-auto border p-4 rounded shadow">
+    <!-- Name -->
+    <!-- <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Enter your name"
+        [(ngModel)]="user.name"
+        name="name"
+        required
+        #nameInput="ngModel"
+      />
+      <small class="text-danger" *ngIf="nameInput.invalid && nameInput.touched">Name is required</small>
+    </div> -->
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter your email"
+        [(ngModel)]="user.email"
+        name="email"
+        required
+        #emailInput="ngModel"
+      />
+      <small class="text-danger" *ngIf="emailInput.invalid && emailInput.touched">Valid email is required</small>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Enter your password"
+        [(ngModel)]="user.password"
+        name="password"
+        required
+        minlength="6"
+        #passwordInput="ngModel"
+      />
+      <small class="text-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
+        Password must be at least 6 characters
+      </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Register</button>
+    <div class="mt-3 text-center">
+      <a routerLink="/login">Already have an account? Login</a>
+    </div>
+  </form>
+</div>

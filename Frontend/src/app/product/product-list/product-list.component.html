@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Product List</h2>
+    
+    <div class="filters">
+      <input type="text" placeholder="Search by name" [(ngModel)]="searchQuery" (input)="onSearchChange()" />
+      <select [(ngModel)]="categoryFilter" (change)="onCategoryChange()">
+        <option value="">All Categories</option>
+        <option *ngFor="let category of ['Electronics', 'Fashion', 'Home', 'Toys']" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+  
+    <div class="pagination-controls">
+      <label for="productsPerPage">Products per page:</label>
+      <select id="productsPerPage" [(ngModel)]="productsPerPage" (change)="onProductsPerPageChange()">
+        <option *ngFor="let option of productsPerPageOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+  
+    <div class="product-grid">
+      <div *ngFor="let product of filteredProducts" class="product-card">
+        <img [src]="product.imageUrl" alt="{{ product.name }}" />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.category }}</p>
+        <p>{{ product.price | currency }}</p>
+        <p>{{ product.description }}</p>
+        <button (click)="addToCart(product._id, 1)">Add to Cart</button>
+      </div>
+    </div>
+  
+    <!-- Pagination controls -->
+    <div class="pagination">
+      <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * productsPerPage >= totalProducts">Next</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <h2 class="text-center">Login</h2>
+  <form (ngSubmit)="login()" #loginForm="ngForm" class="w-50 mx-auto border p-4 rounded shadow">
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter your email"
+        [(ngModel)]="credentials.email"
+        name="email"
+        required
+        #emailInput="ngModel"
+      />
+      <small class="text-danger" *ngIf="emailInput.invalid && emailInput.touched">Valid email is required</small>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Enter your password"
+        [(ngModel)]="credentials.password"
+        name="password"
+        required
+        #passwordInput="ngModel"
+      />
+      <small class="text-danger" *ngIf="passwordInput.invalid && passwordInput.touched">Password is required</small>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+
+    <!-- Navigation to Register -->
+    <div class="mt-3 text-center">
+      <span>Don't have an account? </span>
+      <a routerLink="/register">Register here</a>
+    </div>
+  </form>
+</div>

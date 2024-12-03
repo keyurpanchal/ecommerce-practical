@@ -1,0 +1,41 @@
+<div class="cart-container">
+    <h1 class="cart-title">Your Cart</h1>
+    
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.productName }}</td>
+          <td>
+            <div class="quantity-control">
+              <button (click)="decreaseQuantity(item)">-</button>
+              <!-- <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item)" /> -->
+               <span>{{item.quantity}}</span>
+              <button (click)="increaseQuantity(item)">+</button>
+            </div>
+          </td>
+          <td>{{ item.price | currency }}</td>
+          <td>{{ item.quantity * item.price | currency }}</td>
+          <td>
+            <button class="remove-btn" (click)="removeFromCart(item)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="cart-total">Total: {{ getTotal() | currency }}</div>
+  
+    <div class="cart-actions">
+      <button class="clear-btn" (click)="clearCart()">Clear Cart</button>
+      <button class="checkout-btn" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+  
