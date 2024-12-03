@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
+// auth service
 export class AuthService {
 
   private apiUrl = 'http://localhost:3000/api/auth';
